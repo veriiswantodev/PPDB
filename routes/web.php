@@ -5,12 +5,11 @@ use App\Http\Controllers\{
     JurusanController,
     SettingController,
     SiswaController,
-    DashboardController
+    DashboardController,
+    WebController
 };
 
-Route::get('/', function(){
-    return view('web');
-});
+Route::get('/', [WebController::class, 'index']);
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
