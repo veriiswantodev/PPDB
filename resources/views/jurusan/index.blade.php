@@ -108,29 +108,29 @@
       }
 
       function deleteData(url){
-      swal({
-        title: 'Yakin menghapus?',
-        text: 'Data akan terhapus, jika anda tekan yes',
-        icon: 'warning',
-        buttons: true,
-        dangerMode: true
-      })
-      .then((willDelete) => {
-        if(willDelete){
-          $.post(url, {
-            '_token': $('[name=csrf-token]').attr('content'),
-            '_method': 'delete'
-          })
-          .done((response) => {
-            tableID.ajax.reload();
-            iziToast.success({
-              title: 'Sukses!',
-              message: 'Data Berhasil dihapus',
-              position: 'topRight'
+        swal({
+          title: 'Yakin menghapus?',
+          text: 'Data akan terhapus, jika anda tekan yes',
+          icon: 'warning',
+          buttons: true,
+          dangerMode: true
+        })
+        .then((willDelete) => {
+          if(willDelete){
+            $.post(url, {
+              '_token': $('[name=csrf-token]').attr('content'),
+              '_method': 'delete'
+            })
+            .done((response) => {
+              tableID.ajax.reload();
+              iziToast.success({
+                title: 'Sukses!',
+                message: 'Data Berhasil dihapus',
+                position: 'topRight'
+              });
             });
-          });
-        }
-      });
+          }
+        });
       }
     </script>
 @endpush
